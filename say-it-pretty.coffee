@@ -1,13 +1,20 @@
 # Description:
 #   Post
-#   This script listens for things to say via http at path /hubot/sayitpretty/. Payload should be a json object, format described below.
+#   This script listens for things to say via http at path 
+#   /hubot/sayitpretty/. Payload should be a json object, format 
+#   described below.
 #   
-#   This is intended to be used with other processes, which should submit an http request at the above path to say things via hubot.
+#   This is intended to be used with other processes, which should submit 
+#   an http request at the above path to say things via hubot.
 #
-#   This script also registers for event sayitpretty, which takes (command, successCallback, errorCallback). Just emit 
-#   sayitpretty with a command matching the payload definition below and it will be said, prettily.
+#   This script also registers for event sayitpretty, which takes 
+#   (command, successCallback, errorCallback). Just emit sayitpretty with 
+#   a command matching the payload definition below and it will be said, 
+#   prettily.
 #
-#   The format of the said messages follows the simple formatting options of slack, skype, and Google Talk. See this for more info: https://slack.zendesk.com/hc/en-us/articles/202288908-How-can-I-add-formatting-to-my-messages-
+#   The format of the said messages follows the simple formatting options 
+#   of slack, skype, and Google Talk. See this for more info: 
+#   https://slack.zendesk.com/hc/en-us/articles/202288908-How-can-I-add-formatting-to-my-messages-
 #
 # Dependencies:
 #   None
