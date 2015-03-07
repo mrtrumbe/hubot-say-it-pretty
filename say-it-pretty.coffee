@@ -44,7 +44,8 @@ module.exports = (robot)->
         callback(msg)
       catch e
         robot.logger.error "sayitpretty success callback threw an error. eating it."
-  
+
+
   _do_error = (msg, err, callback) ->
     robot.logger.error "tried to say it pretty. it did not go well. " + msg
     if callback
@@ -52,6 +53,7 @@ module.exports = (robot)->
         callback(msg, err)
       catch e
         robot.logger.error "sayitpretty error callback threw an error. eating it."
+
 
   robot.on "sayitpretty", (command, success, error) ->
     try
@@ -68,26 +70,26 @@ module.exports = (robot)->
         robot.send user, command.text
         _do_success "said your text.", success
         return
-        
+
       msg = ''
       existing = false
       if command.title
         msg = msg + '*' + command.title + '*'
         existing = true
-        
+
       if command.head
         if existing
           msg = msg + '\n'
         msg = msg + '_' + command.head + '_'
-        
+
       indent = false
       if command.indent
         indent = command.indent
-        
+
       if command.message
         if existing
           msg = msg + '\n'
-          
+
         if indent
           msg = msg + '>>>' + command.message
         else
@@ -99,7 +101,7 @@ module.exports = (robot)->
     catch err
       emsg = "error: " + err
       _do_error emsg, err, error
-      
+
 
   robot.router.post "/hubot/sayitpretty/", (req, res)->
     success = (msg) ->
@@ -107,5 +109,5 @@ module.exports = (robot)->
 
     error = (msg, err) ->
       res.end msg
-    
+
     robot.emit "sayitpretty", req.body, success, error
