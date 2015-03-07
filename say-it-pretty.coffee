@@ -37,24 +37,22 @@
 
 TextMessage = require('hubot').TextMessage
 
-_do_success = (msg, callback) ->
-  if callback
-    try
-      callback(msg)
-    catch e
-      console.log "sayitpretty success callback threw an error. eating it."
-
-
-_do_error = (msg, err, callback) ->
-  console.log "tried to say it pretty. it did not go well. " + msg
-  if callback
-    try
-      callback(msg, err)
-    catch e
-      console.log "sayitpretty error callback threw an error. eating it."
-
-
 module.exports = (robot)->
+  _do_success = (msg, callback) ->
+    if callback
+      try
+        callback(msg)
+      catch e
+        robot.logger.error "sayitpretty success callback threw an error. eating it."
+  
+  _do_error = (msg, err, callback) ->
+    robot.logger.error "tried to say it pretty. it did not go well. " + msg
+    if callback
+      try
+        callback(msg, err)
+      catch e
+        robot.logger.error "sayitpretty error callback threw an error. eating it."
+
   robot.on "sayitpretty", (command, success, error) ->
     try
       room = command.room
