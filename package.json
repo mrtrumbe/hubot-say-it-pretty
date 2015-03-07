@@ -1,7 +1,7 @@
 {
   "name": "hubot-say-it-pretty",
   "version": "1.0.0",
-  "description": "Listens for things to say.",
+  "description": "Listens webhook-style for things to say, in a pretty way.",
   "main": "say-it-pretty.coffee",
   "repository": {
     "type": "git",
