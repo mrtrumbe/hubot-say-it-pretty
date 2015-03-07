@@ -1,0 +1,23 @@
+{
+  "name": "hubot-say-it-pretty",
+  "version": "1.0.0",
+  "description": "Listens for things to say.",
+  "main": "say-it-pretty.coffee",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mrtrumbe/hubot-say-it-pretty.git"
+  },
+  "keywords": [
+    "hubot",
+    "say-it-pretty",
+    "listener"
+  ],
+  "author": "Matthew Trumbell <https://github.com/mrtrumbe>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mrtrumbe/hubot-say-it-pretty/issues"
+  },
+  "dependencies": {
+    "coffee-script": "~1.6"
+  }
+}
