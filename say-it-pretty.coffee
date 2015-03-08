@@ -43,7 +43,7 @@ module.exports = (robot)->
       try
         callback(msg)
       catch e
-        robot.logger.error "sayitpretty success callback threw an error. eating it."
+        robot.logger.error "sayitpretty success callback threw an error. eating it. error: " + e
 
 
   _do_error = (msg, err, callback) ->
@@ -52,7 +52,7 @@ module.exports = (robot)->
       try
         callback(msg, err)
       catch e
-        robot.logger.error "sayitpretty error callback threw an error. eating it."
+        robot.logger.error "sayitpretty error callback threw an error. eating it. error: " + e
 
 
   robot.on "sayitpretty", (command, success, error) ->
