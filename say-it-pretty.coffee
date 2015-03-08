@@ -30,6 +30,7 @@
 #   head - The head of the thing to say. Optional. Heads are just below the title and are italicized.
 #   message - The message to say. Optional. Messages are just below the head.
 #   indent - Whether to indent the message. Defaults to false.
+#   compact - Whether the message should be compact. Defaults to true.
 #   text - Forget about all the other properties and just post this formatted text. Should be formatted according to: https://slack.zendesk.com/hc/en-us/articles/202288908-How-can-I-add-formatting-to-my-messages-
 #
 # Author:
@@ -71,6 +72,10 @@ module.exports = (robot)->
         _do_success "said your text.", success
         return
 
+      compact = true
+      if command.compact
+        compact = command.compact
+
       msg = ''
       existing = false
       if command.title
@@ -78,7 +83,7 @@ module.exports = (robot)->
         existing = true
 
       if command.head
-        if existing
+        if existing and not compact
           msg = msg + '\n'
         msg = msg + '_' + command.head + '_'
 
