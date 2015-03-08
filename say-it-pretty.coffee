@@ -31,6 +31,7 @@
 #   message - The message to say. Optional. Messages are just below the head.
 #   indent - Whether to indent the message. Defaults to false.
 #   compact - Whether the message should be compact. Defaults to true.
+#   format - Whether the message should be formatted with bold, italics, etc. Defaults to true.
 #   text - Forget about all the other properties and just post this formatted text. Should be formatted according to: https://slack.zendesk.com/hc/en-us/articles/202288908-How-can-I-add-formatting-to-my-messages-
 #
 # Author:
@@ -76,10 +77,17 @@ module.exports = (robot)->
       if command.compact?
         compact = command.compact
 
+      format = true
+      if command.format?
+        format = command.format
+
       msg = ''
       existing = false
       if command.title
-        msg = msg + '*' + command.title + '*'
+        if format
+          msg = msg + '*' + command.title + '*'
+        else
+          msg = msg + command.title
         existing = true
 
       if command.head
@@ -88,17 +96,20 @@ module.exports = (robot)->
             msg = msg + ' '
           else
             msg = msg + '\n'
-        msg = msg + '_' + command.head + '_'
+        if format
+          msg = msg + '_' + command.head + '_'
+        else
+          msg = msg + command.head
 
       indent = false
-      if command.indent
+      if command.indent?
         indent = command.indent
 
       if command.message
         if existing
           msg = msg + '\n'
 
-        if indent
+        if indent and format
           msg = msg + '>>>' + command.message
         else
           msg = msg + command.message
