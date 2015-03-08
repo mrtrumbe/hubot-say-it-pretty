@@ -73,7 +73,7 @@ module.exports = (robot)->
         return
 
       compact = true
-      if command.compact
+      if command.compact?
         compact = command.compact
 
       msg = ''
