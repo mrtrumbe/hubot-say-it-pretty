@@ -83,8 +83,11 @@ module.exports = (robot)->
         existing = true
 
       if command.head
-        if existing and not compact
-          msg = msg + '\n'
+        if existing
+          if compact
+            msg = msg + ' '
+          else
+            msg = msg + '\n'
         msg = msg + '_' + command.head + '_'
 
       indent = false
