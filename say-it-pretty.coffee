@@ -85,7 +85,8 @@ module.exports = (robot)->
       existing = false
       if command.title
         if format
-          msg = msg + '*' + command.title + '*'
+          title = command.title.replace('*', '')
+          msg = msg + '*' + title + '*'
         else
           msg = msg + command.title
         existing = true
@@ -97,7 +98,8 @@ module.exports = (robot)->
           else
             msg = msg + '\n'
         if format
-          msg = msg + '_' + command.head + '_'
+          head = command.head.replace('_', '')
+          msg = msg + '_' + head + '_'
         else
           msg = msg + command.head
 
@@ -110,6 +112,7 @@ module.exports = (robot)->
           msg = msg + '\n'
 
         if indent and format
+          body = command.message.replace('>', '')
           msg = msg + '>>>' + command.message
         else
           msg = msg + command.message
